@@ -16,7 +16,9 @@ server {
       add_header Content-Length 0;
       return 200;
     }
+  }
 
+  location /api {
     proxy_set_header Host $http_host;
     proxy_pass http://mizuapi/api;
   }
