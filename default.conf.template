@@ -10,15 +10,15 @@ server {
   location / {
     proxy_set_header Host $http_host;
     proxy_pass http://mizuapi/api;
-    proxy_hide_header Access-Control-Allow-Origin;
-    add_header Access-Control-Allow-Origin $http_origin;
+    proxy_hide_header "Access-Control-Allow-Origin";
+    add_header "Access-Control-Allow-Origin" "*";
   }
 
   location /api {
     proxy_set_header Host $http_host;
     proxy_pass http://mizuapi/api;
-    proxy_hide_header Access-Control-Allow-Origin;
-    add_header Access-Control-Allow-Origin $http_origin;
+    proxy_hide_header "Access-Control-Allow-Origin";
+    add_header "Access-Control-Allow-Origin" "*";
   }
 
 }
