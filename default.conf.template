@@ -17,7 +17,7 @@ server {
       add_header "Access-Control-Allow-Origin" *;
       add_header "Access-Control-Allow-Origin" "GET, POST, PUT, DELETE, OPTIONS, PATCH, HEAD";
       add_header "Access-Control-Allow-Origin" "Authorization, Origin, X-Requested-With, Content-Type, Accept";
-      return 200
+      return 200;
     }
 
     proxy_set_header Host $http_host;
