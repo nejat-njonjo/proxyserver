@@ -21,5 +21,6 @@ server {
   location /api {
     proxy_set_header Host $http_host;
     proxy_pass http://mizuapi/api;
+    add_header "Access-Control-Allow-Origin" "https://mizuehr.herokuapp.com";
   }
 }
