@@ -12,6 +12,6 @@ server {
     proxy_pass http://mizuapi/api;
     proxy_hide_header Access-Control-Allow-Origin;
     add_header Access-Control-Allow-Origin *;
-    add_header Access-Control-Allow-Headers 'Content-Type', 'Authorization';
+    add_header Access-Control-Allow-Headers "Content-Type, Authorization, Accept";
   }
 }
