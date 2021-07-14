@@ -9,7 +9,6 @@ server {
 
   location / {
     if ($request_method = OPTIONS) {
-      proxy_hide_header Access-Control-Allow-Origin;
       add_header Access-Control-Allow-Origin $http_origin;
       add_header Access-Control-Allow-Methods "GET, OPTIONS, PUT, POST, HEAD, PATCH, DELETE";
       add_header Access-Control-Allow-Headers "Authorization";
