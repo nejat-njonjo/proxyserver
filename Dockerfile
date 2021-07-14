@@ -1,7 +1,5 @@
 FROM nginx:1.21.0
 
-RUN apt-get install nginx-extras -y
-
 COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY static-html /usr/share/nginx/html
