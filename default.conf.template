@@ -8,17 +8,27 @@ server {
   listen $PORT default_server;
 
   location / {
+
+    if ($request_method ~* "(GET|POST|PUT|DELETE)") {
+      add_header "Access-Control-Allow-Origin" *;
+    }
+
+    if ($request_method = OPTIONS ) {
+      add_header "Access-Control-Allow-Origin" *;
+      add_header "Access-Control-Allow-Origin" "GET, POST, PUT, DELETE, OPTIONS, PATCH, HEAD";
+      add_header "Access-Control-Allow-Origin" "Authorization, Origin, X-Requested-With, Content-Type, Accept";
+      return 200
+    }
+
     proxy_set_header Host $http_host;
     proxy_pass http://mizuapi/api;
-    proxy_hide_header "Access-Control-Allow-Origin";
-    add_header "Access-Control-Allow-Origin" "*";
   }
 
-  location /api {
-    proxy_set_header Host $http_host;
-    proxy_pass http://mizuapi/api;
-    proxy_hide_header "Access-Control-Allow-Origin";
-    add_header "Access-Control-Allow-Origin" "*";
-  }
+#  location /api {
+#    proxy_set_header Host $http_host;
+#    proxy_pass http://mizuapi/api;
+#    proxy_hide_header "Access-Control-Allow-Origin";
+#    add_header "Access-Control-Allow-Origin" "*";
+#  }
 
 }
