@@ -1,8 +1,20 @@
+upstream mizuapi {
+  server 143.244.128.61:3000 fail_timeout=60;
+  server 143.244.128.61:80 fail_timeout=60;
+  server 143.244.128.61 fail_timeout=60;
+}
+
 server {
   listen $PORT default_server;
 
   location / {
-    root   /usr/share/nginx/html;
-    index  index.html index.htm;
+    proxy_set_header Host $http_host;
+    proxy_pass http://mizuapi/api;
   }
+
+  location /api {
+    proxy_set_header Host $http_host;
+    proxy_pass http://mizuapi/api;
+  }
+
 }
