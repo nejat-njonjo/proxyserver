@@ -8,10 +8,17 @@ server {
   listen $PORT default_server;
 
   location / {
+    if ($request_method = OPTIONS) {
+      proxy_hide_header Access-Control-Allow-Origin;
+      add_header Access-Control-Allow-Origin $http_origin;
+      add_header Access-Control-Allow-Methods "GET, OPTIONS, PUT, POST, HEAD, PATCH, DELETE";
+      add_header Access-Control-Allow-Headers "Authorization";
+      add_header Access-Control-Allow-Credentials "true";
+      add_header Content-Length 0;
+      return 200;
+    }
+
     proxy_set_header Host $http_host;
     proxy_pass http://mizuapi/api;
-    proxy_hide_header Access-Control-Allow-Origin;
-    add_header Access-Control-Allow-Origin $http_origin;
-    add_header Access-Control-Allow-Headers "Content-Type, Authorization, Accept";
   }
 }
