@@ -8,8 +8,8 @@ server {
   listen $PORT default_server;
 
   location / {
-    prox_set_header 'Access-Control-Allow-Origin' "http_origin" always;
-    prox_set_header 'Access-Control-Allow-Credentials' 'true' always;
+    proxy_set_header 'Access-Control-Allow-Origin' "http_origin" always;
+    proxy_set_header 'Access-Control-Allow-Credentials' 'true' always;
 
     if ($request_method = OPTIONS) {
       proxy_set_header 'Access-Control-Allow-Origin' "http_origin";
