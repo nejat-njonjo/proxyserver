@@ -8,9 +8,6 @@ server {
   listen $PORT default_server;
 
   location / {
-    add_header 'Access-Control-Allow-Origin' "$http_origin" always;
-    add_header 'Access-Control-Allow-Credentials' 'true' always;
-
     if ($request_method = OPTIONS) {
       add_header 'Access-Control-Allow-Origin' "$http_origin";
       add_header 'Access-Control-Allow-Credentials' 'true';
