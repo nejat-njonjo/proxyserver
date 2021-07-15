@@ -25,6 +25,9 @@ server {
   location /api {
     add_header 'Access-Control-Allow-Origin' "$http_origin";
     add_header 'Access-Control-Allow-Credentials' 'true';
+    add_header 'Access-Control-Allow-Headers' "Authorization, Origin, X-Requested-With, Accept, Content-Type, Kee-Alive, User-Agent,Cache-Control";
+    add_header 'Access-Control-Allow-Headers' "Authorization, Origin, X-Requested-With, Accept, Content-Type, Kee-Alive, User-Agent,Cache-Control";
+
     proxy_set_header Host $http_host;
     proxy_pass http://mizuapi/api;
   }
