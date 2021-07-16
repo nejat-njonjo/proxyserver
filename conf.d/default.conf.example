@@ -3,9 +3,10 @@ upstream api_server {
   server localhost:3000 fail_timeout=60;
 }
 
-
 server {
-  listen $PORT default_server;
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
 
   # If you are using cors and set credentials to true
   location /api {
