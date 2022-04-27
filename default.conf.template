@@ -1,7 +1,7 @@
 upstream mizuapi {
-  server 143.244.128.61:3000 fail_timeout=60;
-  server 143.244.128.61:80 fail_timeout=60;
-  server 143.244.128.61 fail_timeout=60;
+  server 64.227.185.74:3000 fail_timeout=60;
+  server 64.227.185.74:80 fail_timeout=60;
+  server 64.227.185.74 fail_timeout=60;
 }
 
 server {
